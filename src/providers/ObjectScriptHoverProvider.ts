@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 import { AtelierAPI } from "../api/index";
 import { ClassDefinition } from "../utils/classDefinition";
 import { currentFile } from "../utils";
-import commands = require("./completion/commands.json");
+import localization = require("./completion/localization");
 import structuredSystemVariables = require("./completion/structuredSystemVariables.json");
 import systemFunctions = require("./completion/systemFunctions.json");
 import systemVariables = require("./completion/systemVariables.json");
@@ -79,13 +79,15 @@ export class ObjectScriptHoverProvider implements vscode.HoverProvider {
     const commandMatch = text.match(/^\s+\b[a-z]+\b$/i);
     if (commandMatch) {
       const search = text.trim().toUpperCase();
-      const command = commands.find((el) => el.label === search || el.alias.includes(search));
-      if (search) {
-        return {
-          contents: [command.documentation.join(""), this.documentationLink(command.link)],
-          range: word,
-        };
-      }
+      return localization.searchCommand(search).then((command) => {
+        if (command) {
+          return {
+            contents: [command.documentation.join(""), this.documentationLink(command.link)],
+            range: word,
+          };
+        }
+        return null;
+      });
     }
   }
 
