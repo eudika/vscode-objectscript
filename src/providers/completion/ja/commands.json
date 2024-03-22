@@ -1,0 +1,18 @@
+[
+  {
+    "label": "SET",
+    "documentation": [
+      "値を変数に代入します。\n",
+      "```objectscript\n",
+      "SET:pc setargument,...  \n",
+      "S:pc setargument,...  \n",
+      "```\n",
+      "引数:\n\n",
+      "`pc` _オプション_ — 後置条件式",
+      "`variable` 対応する`value`に設定される変数。`variable`は、ローカル変数、プロセス・プライベート・グローバル、グローバル、オブジェクト・プロパティ、または特殊変数にできます。(すべての特殊変数がアプリケーションによって設定されるわけではありません。詳細は、それぞれの特殊変数のドキュメントを参照してください。) ",
+      "`variable-list` 1 つ、または複数の`variable`引数で構成されている、括弧で囲まれたコンマ区切りのリスト。`variable-list`のすべての`variable`引数に、同じ`value`が代入されます。 ",
+      "`value` リテラル値、または値に評価される有効な ObjectScript 式。JSON オブジェクトまたは JSON 配列を指定できます。\n"
+    ],
+    "link": "/csp/docbookj/DocBook.UI.Page.cls?KEY=RCOS_cset"
+  }
+]
